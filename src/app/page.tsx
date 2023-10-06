@@ -1,95 +1,52 @@
-import Image from 'next/image'
-import styles from '../styles/page.module.css'
+import Icon from '@/components/Icon';
+import Image from 'next/image';
+import Link from 'next/link';
 
 export default function Home() {
     return (
-        <main className={styles.main}>
-        <div className={styles.description}>
-            <p>
-            Get started by editing&nbsp;
-            <code className={styles.code}>src/app/page.tsx</code>
-            </p>
-            <div>
-            <a
-                href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-                target="_blank"
-                rel="noopener noreferrer"
-            >
-                By{' '}
-                <Image
-                src="/vercel.svg"
-                alt="Vercel Logo"
-                className={styles.vercelLogo}
-                width={100}
-                height={24}
-                priority
-                />
-            </a>
-            </div>
-        </div>
+        <>
+            <header className='d-flex justify-between'>
+                {/* Logo */}
+                <a className='logo' href='/'>
+                    <Image
+                        height={50}
+                        width={150}
+                        src={"/images/logo/logo.svg"}
+                        alt='IOStream Logo'
+                    />
+                </a>
 
-        <div className={styles.center}>
-            <Image
-            className={styles.logo}
-            src="/next.svg"
-            alt="Next.js Logo"
-            width={180}
-            height={37}
-            priority
-            />
-        </div>
+                <div className='d-flex align-center c-gap--1 c-md-gap--2'>
+                    <ul className='d-flex c-gap--1'>
+                        <li>
+                           <Icon
+                            name='github'
+                           />
+                        </li>
+                    </ul>
 
-        <div className={styles.grid}>
-            <a
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            className={styles.card}
-            target="_blank"
-            rel="noopener noreferrer"
-            >
-            <h2>
-                Docs <span>-&gt;</span>
-            </h2>
-            <p>Find in-depth information about Next.js features and API.</p>
-            </a>
+                </div>
+            </header>
 
-            <a
-            href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            className={styles.card}
-            target="_blank"
-            rel="noopener noreferrer"
-            >
-            <h2>
-                Learn <span>-&gt;</span>
-            </h2>
-            <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-            </a>
 
-            <a
-            href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            className={styles.card}
-            target="_blank"
-            rel="noopener noreferrer"
-            >
-            <h2>
-                Templates <span>-&gt;</span>
-            </h2>
-            <p>Explore the Next.js 13 playground.</p>
-            </a>
+            <main>
+                {/* Hero */}
+                <section className='text-center'>
+                    <h1 className='text-lg1'>
+                        <span className='text-lg3'>Seamless <span className='text-grand'>Surveillance</span></span> <br/>
+                    Elevate Monitoring with <br/> <span className='text-grand text-lg1'>IoT</span></h1>
 
-            <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            className={styles.card}
-            target="_blank"
-            rel="noopener noreferrer"
-            >
-            <h2>
-                Deploy <span>-&gt;</span>
-            </h2>
-            <p>
-                Instantly deploy your Next.js site to a shareable URL with Vercel.
-            </p>
-            </a>
-        </div>
-        </main>
+
+                    <p className='text-lg4 grey mt-2'>With <span className='text-grand'>IOStream</span> you get to harness the power of <br/> IoT for real-time insights</p>
+                    
+                    <Link
+                        className='hero-btn mt-5'
+                        title='Navigate to monitor'
+                        href={"/monitor"}>
+                            <span className='text-grand text-lg3'>View Demo</span>
+                    </Link>
+                </section>
+            </main>
+        </>
     )
 }
