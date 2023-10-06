@@ -60,7 +60,7 @@ const Monitor = () => {
                                 </div>
 
                                 <div className='text-center mt-3'>
-                                    <span className='text-grand'>24<sup>o</sup>C</span>
+                                    <span className='text-grand text-lg2 d-block text-bold'>24<sup>o</sup>C</span>
                                     <small className='text-s1 grey'>Temperature</small>
                                 </div>
                             </article>
