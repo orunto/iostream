@@ -38,6 +38,10 @@
   --callout-border-rgb: 172, 175, 176;
   --card-rgb: 180, 185, 188;
   --card-border-rgb: 131, 134, 135;
+
+
+  /* Custom colors */
+  --grey: #252525;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -99,6 +103,79 @@ a {
   color: inherit;
   text-decoration: none;
 }
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+
+header,
+main,
+footer {
+    max-width: 100%;
+    width: var(--max-width);
+    margin-inline: auto;
+
+    padding: 2rem;
+}
+
+
+.icon {
+    display: inline-block;
+
+    width: 2.5rem;
+    height: 3rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: var(--grey, black);
+    border-radius: var(--border-radius, 10px);
+}
+
+
+.sensor-display {
+    width: 100%;
+    height: 200px;
+
+    background-color: var(--grey, black);
+    border-radius: var(--border-radius, 10px);
+}
+
+
+.log-list {
+    max-width: 100%;
+}
+
+.log-list .log-item {
+    padding-block: 1.3rem;
+    border-bottom: 1px solid var(--grey);
+}
+
+
+
+@media screen and (min-width: 1100px) {
+    .log-list {
+        width:22rem;
+        max-height: 500px;
+        overflow: auto;
+    }
+
+    header,
+    main,
+    footer {
+        padding-inline: 0;
+    }
+
+
+    .sensor-display {
+        width: 280px;
+        height: 200px;
+    }
+}
+
 
 @media (prefers-color-scheme: dark) {
   html {

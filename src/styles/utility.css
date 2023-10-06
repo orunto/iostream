@@ -1,0 +1,75 @@
+/* Display utility classes */
+.d-flex {
+    display: flex;
+    column-gap: var(--column-gap);
+    row-gap: var(--row-gap);
+}
+
+.d-flex.justify-between {
+    justify-content: space-between;
+}
+.d-flex.justify-center {
+    justify-content: center;
+}
+.d-flex.align-center {
+    align-items: center;
+}
+
+.d-flex.col {
+    flex-direction: column;
+}
+
+
+
+.d-block {
+    display: block;
+}
+
+
+/* Flex Gap varaibles */
+.c-gap--1 {
+    --column-gap: .99rem;
+}
+.c-gap--2 {
+    --column-gap: 1.2rem;
+}
+.r-gap--2 {
+    --row-gap: 1.2rem;
+}
+
+@media screen and (min-width: 1100px) {
+    .c-md-gap--2 {
+        --column-gap: 1.7rem;
+    }
+    .d-flex.row-md {
+        flex-direction: row;
+    }
+}
+
+
+/* Margin and paddings */
+
+.my-1 {
+    margin-block: 1.5rem;
+}
+.my-2 {
+    margin-block: 2.5rem;
+}
+.mt-1 {
+    margin-top: 1.5rem;
+}
+.mt-2 {
+    margin-top: 2.5rem;
+}
+.mt-3 {
+    margin-top: 3.5rem;
+}
+.mt-5 {
+    margin-top: 4.5rem;
+}
+
+
+/* Texts */
+.text-center {
+    text-align: center;
+}
