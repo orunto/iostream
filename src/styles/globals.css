@@ -161,6 +161,19 @@ button.icon {
 }
 
 
+.icon[data-animation="rotate"] img {
+    animation: rotation 1.6s infinite linear;
+}
+
+@keyframes rotation {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(-359deg);
+    }
+}
 .toggle {
     display: inline-block;
     width: 40px;

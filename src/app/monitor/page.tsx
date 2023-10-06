@@ -29,7 +29,9 @@ const Monitor = () => {
 
                         <li>
                             <Icon
-                            name='refresh'
+                                name='refresh'
+                                // animation="rotate"
+                                title="Updating..."
                            />
                         </li>
                     </ul>
