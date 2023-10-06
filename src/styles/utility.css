@@ -72,8 +72,12 @@
 }
 
 
-.mb--2-7 {
+.my--2-7 {
     margin-block: 2rem .7rem;
+}
+
+.my-10 {
+    margin-block: 13rem;
 }
 
 /* Texts */

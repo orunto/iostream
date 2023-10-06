@@ -46,7 +46,29 @@ export default function Home() {
                             <span className='text-grand text-lg3'>View Demo</span>
                     </Link>
                 </section>
+
+
+
+                <section className='d-flex col row-md justify-evenly align-center my-10'>
+                    
+                    <h2 className='text-lg3'>Built with the latest cloud storage technology</h2>
+
+
+                    <div style={{width:"600px", maxWidth:'100%'}}>
+                        <Image
+                            src={"https://www.nobox.cloud/Grid%20AndLogo.svg"}
+                            alt='Nobox Cloud service'
+                            width={100}
+                            height={100}
+                        />
+                    </div>
+                </section>
             </main>
+
+
+            <footer>
+                <span className='text-italic grey text-s1'>&copy; Copyright IOStream, 2023. Powered by <a href='https://nobox.cloud'>Nobox</a></span>
+            </footer>
         </>
     )
 }
