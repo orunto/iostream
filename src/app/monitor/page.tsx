@@ -1,10 +1,10 @@
 import Image from 'next/image';
 import ToggleSwitch from '@/components/ToggleSwitch';
 
-import pageStyle from '../../styles/page.module.css';
 import Icon from '@/components/Icon';
-import { sensors } from '@/config/storage';
+import { devices, sensors } from '@/config/storage';
 import Metric from '@/components/Metric';
+import Logs from '@/components/Logs';
 
 
 const Monitor = () => {
@@ -81,16 +81,19 @@ const Monitor = () => {
                         <h3>Device information</h3>
 
                         {/* Device info */}
-                        <div className='mt-1 device d-flex c-gap--2'>
-                            <Icon
-                                name='chip'
-                            />
+                        {devices.map((item, index)=>(
+                            <div key={index} className='mt-1 device d-flex c-gap--2'>
+                                <Icon
+                                    name='chip'
+                                />
 
-                            <div>
-                                <span>Arduino xxx</span>
+                                <div>
+                                    <span>Arduino {item.type}</span>
+                                </div>
+                                
                             </div>
-                            
-                        </div>
+                        ))}
+                        
                     </div>
 
 
@@ -99,21 +102,7 @@ const Monitor = () => {
                         <h3>Update log</h3>
 
                         {/* Update log */}
-                        <ul className='mt-1 log-list'>
-                            {[1,2,3,4,5].map(item=>(
-                                <li key={item} className='d-flex align-center log-item'>
-                                    {/* icons */}
-                                    <Icon
-                                        name="server"
-                                    />
-                                    <div>
-                                        <small className='text-italic text-s1 grey text-bold'>Last updated</small>
-                                        <br/>
-                                        <span className='mt-1'>sometime</span>
-                                    </div>
-                                </li>
-                            ))}
-                        </ul>
+                        <Logs/>
 
                     </div>
 
