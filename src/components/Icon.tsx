@@ -3,7 +3,7 @@ import Image from "next/image";
 
 type IconProps = {
     name: string,
-    animation?:'rotate',
+    animation?:'rotate' | string,
     title?:string,
     link?: string,
     action?: Function

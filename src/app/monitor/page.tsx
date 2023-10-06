@@ -1,3 +1,4 @@
+'use client';
 import Image from 'next/image';
 import ToggleSwitch from '@/components/ToggleSwitch';
 
@@ -5,9 +6,12 @@ import Icon from '@/components/Icon';
 import { devices, sensors } from '@/config/storage';
 import Metric from '@/components/Metric';
 import Logs from '@/components/Logs';
+import useSensorContext from '@/context/Sensor';
 
 
 const Monitor = () => {
+    const {status} = useSensorContext();
+    const isLoading = status === 'loading';
     return (
         <>
             <header className='d-flex justify-between'>
@@ -33,8 +37,8 @@ const Monitor = () => {
                         <li>
                             <Icon
                                 name='refresh'
-                                // animation="rotate"
-                                title="Updating..."
+                                animation={ isLoading ? 'rotate' : '' }
+                                title={ isLoading ? "Synchronizing..." : ''}
                            />
                         </li>
                     </ul>
