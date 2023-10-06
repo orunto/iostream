@@ -272,6 +272,24 @@ button.icon {
 }
 
 
+.features {
+    --row-gap: 2rem;
+    --column-gap: 1.6rem;
+}
+
+
+.features article {
+    padding: 2rem;
+    max-width: 100%;
+
+    background-color: var(--grey);
+
+    border-radius: 1rem;
+
+    margin-block: 1.5rem;
+
+    line-height: 1.6rem;
+}
 
 .stack {
     height: 600px;
@@ -295,6 +313,24 @@ button.icon {
     .sensor-display {
         width: 270px;
         height: 230px;
+    }
+
+
+    .features {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        justify-content: center;
+
+        gap: 2rem;
+
+        margin-block: 4rem 1.5rem;
+    }
+
+    .features article {
+        padding: 3rem;
+
+        margin-block: 0;
+        line-height: 2rem;
     }
 }
 
