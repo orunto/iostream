@@ -130,6 +130,7 @@ img {
 
 .logo {
     width: 8rem;
+    display: block;
 }
 
 .icon {

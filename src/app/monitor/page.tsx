@@ -10,14 +10,14 @@ const Monitor = () => {
         <>
             <header className='d-flex justify-between'>
                 {/* Logo */}
-                <div className='logo'>
+                <a className='logo' href='/'>
                     <Image
                         height={50}
                         width={150}
                         src={"/images/logo/logo.svg"}
                         alt='IOStream Logo'
                     />
-                </div>
+                </a>
 
                 <div className='d-flex align-center c-gap--1 c-md-gap--2'>
                     <ul className='d-flex c-gap--1'>
