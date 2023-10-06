@@ -1,4 +1,6 @@
+import useSensorContext from "@/context/Sensor";
 import Icon from "./Icon";
+import { verboseTime } from "@/utils/time";
 
 
 /* Logs basically reads all queries, and display records timestamps
@@ -7,7 +9,10 @@ Users look at log to see when last the information display to them was last fetc
 */
 
 const RecordLogs = () => {
-    const records:string[] = [];
+
+    const {records} = useSensorContext();
+
+    const dt = new Date("2023-10-06T13:14:21.297Z");
 
     return (
         <ul className='mt-1 log-list'>
@@ -28,7 +33,7 @@ const RecordLogs = () => {
                         <div>
                             <small className='text-italic text-s1 grey text-bold'>Last updated</small>
                             <br/>
-                            <span className='mt-1'>sometime</span>
+                            <span className='mt-1'>{verboseTime(new Date(item.createdAt))}</span>
                         </div>
                     </li>
                 ))

@@ -6,12 +6,13 @@ import Icon from '@/components/Icon';
 import { devices, sensors } from '@/config/storage';
 import Metric from '@/components/Metric';
 import Logs from '@/components/Logs';
-import useSensorContext from '@/context/Sensor';
+import useSensorContext, { SensorContextProvider } from '@/context/Sensor';
 
 
 const Monitor = () => {
-    const {status} = useSensorContext();
+    const {status, records, updateStatus} = useSensorContext();
     const isLoading = status === 'loading';
+
     return (
         <>
             <header className='d-flex justify-between'>
@@ -39,6 +40,7 @@ const Monitor = () => {
                                 name='refresh'
                                 animation={ isLoading ? 'rotate' : '' }
                                 title={ isLoading ? "Synchronizing..." : ''}
+                                action={()=> updateStatus && updateStatus(true)}
                            />
                         </li>
                     </ul>
@@ -67,7 +69,7 @@ const Monitor = () => {
                                 </div>
 
                                 <div className='text-center mt-3'>
-                                    <Metric/>
+                                    <Metric logs={records}/>
                                     <small className='text-s1 grey'>{item.name}</small>
                                 </div>
                             </article>
@@ -123,4 +125,13 @@ const Monitor = () => {
 }
 
 
-export default Monitor;
+const MonitorWrapper = () => {
+    return (
+        <SensorContextProvider>
+            <Monitor/>
+        </SensorContextProvider>
+    )
+}
+
+
+export default MonitorWrapper;

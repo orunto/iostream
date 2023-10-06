@@ -1,12 +1,42 @@
 // Storage configuration
 
+const structures = {
+    soilMoistureStructure: {
+        "name": "soilMoisture",
+        "description": "",
+        "slug": "soilMoisture",
+        "webhooks": null,
+        "recordFieldStructures": [
+            {
+            "required": false,
+            "unique": false,
+            "description": "",
+            "comment": "",
+            "hashed": false,
+            "name": "value",
+            "slug": "value",
+            "type": "NUMBER"
+            },
+            {
+            "required": false,
+            "unique": false,
+            "description": "",
+            "comment": "",
+            "hashed": false,
+            "name": "unit",
+            "slug": "unit",
+            "type": "TEXT"
+            }
+        ]
+    }
+}
 
-// Soil moisture
 const sensors = [
     {
         name: "Capacity soil moisture sensor",
         metric: "Soil Moisture",
         unit: "percent",
+        structure: structures.soilMoistureStructure,
         record: {
             query: "/soilmoisture",
             // write: ""
@@ -43,5 +73,5 @@ const devices = [
 
 export {
     sensors,
-    devices
+    devices,
 }

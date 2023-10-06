@@ -1,27 +1,26 @@
 'use client';
+import { SoilStructureModel } from '@/config/structures';
 // Sensor context
 import { ISoilMoisture } from '@/config/types';
-import {createContext, useContext,useState, ReactNode} from 'react';
+import {createContext, useContext,useState, useEffect, ReactNode} from 'react';
 
 type Status = 'loading' | 'not-loading';
 interface ISensorStateContext {
     records: ISoilMoisture[],
     status: Status,
+    updateStatus?: (load:boolean)=>void
 }
 
 interface ISensorContextProvider {
     children: ReactNode
 }
 
-interface ISensorContext extends ISensorStateContext {
-    
-}
 
 
 
-
+// ===========================================================
 const initialState:ISensorStateContext = {
-    status: 'loading',
+    status: 'not-loading',
     records: []
 }
 
@@ -35,23 +34,49 @@ export default useSensorContext;
 
 
 
-const SensorContextProvider = (props:ISensorContextProvider) => {
+export const SensorContextProvider = (props:ISensorContextProvider) => {
 
     const [records, setRecords] = useState<ISoilMoisture[]>([]);
     const [status, setStatus] = useState<Status>('not-loading');
 
 
-    const context:ISensorContext = {
+    const loadRecords = async () => {
+        
+        if(status !== 'loading') return;
+        
+        const records = await SoilStructureModel.find({})
+
+        // return records; 
+        setStatus(()=>'not-loading')
+        setRecords(()=>Array.isArray(records) ? records.reverse() : []);
+    }
+
+
+    useEffect(()=>{
+        (
+            ()=>loadRecords()
+        )()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [status, records]);
+
+
+    const context:ISensorStateContext = {
         records,
-        status
+        status,
+
+        updateStatus: (load)=>setStatus(()=>load ? 'loading' : 'not-loading')
     }
 
     return (
         <SensorContext.Provider value={context}>
+
+            <SensorContext.Consumer>
+                {
+                    ()=>props.children
+                }
+            </SensorContext.Consumer>
+
+            {/* {props.children} */}
         </SensorContext.Provider>
     )
 }
-
-
-
-
