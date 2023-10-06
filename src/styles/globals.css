@@ -1,6 +1,6 @@
 :root {
   --max-width: 1100px;
-  --border-radius: 12px;
+  --border-radius: 10px;
   --font-mono: ui-monospace, Menlo, Monaco, 'Cascadia Mono', 'Segoe UI Mono',
     'Roboto Mono', 'Oxygen Mono', 'Ubuntu Monospace', 'Source Code Pro',
     'Fira Mono', 'Droid Sans Mono', 'Courier New', monospace;
@@ -97,6 +97,8 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
+
+    font-size: 14px;
 }
 
 a {
@@ -121,11 +123,24 @@ footer {
 }
 
 
+img {
+    width: 100%;
+    height: auto;
+}
+
+.logo {
+    width: 8rem;
+}
+
 .icon {
     display: inline-block;
 
-    width: 2.5rem;
-    height: 3rem;
+    /* width: 2.2rem;
+    height: 2.8rem; */
+    width: 40px;
+    height: 40px;
+
+    padding: .5rem;
 
     display: flex;
     align-items: center;
@@ -135,8 +150,67 @@ footer {
     border-radius: var(--border-radius, 10px);
 }
 
+button.icon {
+    border: 0;
+    cursor: pointer;
+}
+
+.device .icon {
+    width: 65px;
+    height: 65px;
+}
+
+
+.toggle {
+    display: inline-block;
+    width: 40px;
+    height: 17px;
+
+    border-radius: .6rem;
+
+    background: rgb(var(--foreground-rgb));
+    border-color: transparent;
+
+    position: relative;
+}
+
+.toggle i {
+    position: absolute;
+    top: 2px;
+
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+
+    background-color: var(--grey);
+    border-color: transparent;
+
+    transition: all 900ms ease;
+}
+
+.disabled {
+    opacity: .6;
+}
+
+
+.toggle[data-on="true"] {
+    background: linear-gradient(#EDBAFF, #A1FFFF);
+}
+
+.toggle[data-on="true"] i {
+    right: 1px;    
+    background-color: #1A1A1A;
+}
+
+.toggle:not([data-on="true"]) i {
+    left: 1px;
+}
+
 
 .sensor-display {
+
+    padding: 1rem;
     width: 100%;
     height: 200px;
 
@@ -152,6 +226,8 @@ footer {
 .log-list .log-item {
     padding-block: 1.3rem;
     border-bottom: 1px solid var(--grey);
+
+    --column-gap: 1rem;
 }
 
 
@@ -171,8 +247,8 @@ footer {
 
 
     .sensor-display {
-        width: 280px;
-        height: 200px;
+        width: 270px;
+        height: 230px;
     }
 }
 
