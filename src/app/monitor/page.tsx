@@ -3,6 +3,8 @@ import ToggleSwitch from '@/components/ToggleSwitch';
 
 import pageStyle from '../../styles/page.module.css';
 import Icon from '@/components/Icon';
+import { sensors } from '@/config/storage';
+import Metric from '@/components/Metric';
 
 
 const Monitor = () => {
@@ -24,6 +26,7 @@ const Monitor = () => {
                         <li>
                            <Icon
                             name='doc'
+                            link='https://github.com/orunto/iostream/tree/main#readme'
                            />
                         </li>
 
@@ -50,18 +53,18 @@ const Monitor = () => {
 
                 <section className='my-1 d-flex col row-md r-gap--2 align-center justify-evenly'>
                     {
-                        [1,2,3].map((item)=>(
-                            <article key={item} className='sensor-display'>
+                        sensors.map((item, index)=>(
+                            <article key={index} className={'sensor-display ' + (!Boolean(item.record.query) && 'disabled')}>
                                 <div className='d-flex justify-between'>
-                                    <span className='text-x1'>Temp sensor</span>
+                                    <span className='text-x1'>{item.metric}</span>
 
                                     {/* Toggle switch */}
-                                    <ToggleSwitch on/>
+                                    <ToggleSwitch on={Boolean(item.record.query)}/>
                                 </div>
 
                                 <div className='text-center mt-3'>
-                                    <span className='text-grand text-lg2 d-block text-bold'>24<sup>o</sup>C</span>
-                                    <small className='text-s1 grey'>Temperature</small>
+                                    <Metric/>
+                                    <small className='text-s1 grey'>{item.name}</small>
                                 </div>
                             </article>
                         ))
