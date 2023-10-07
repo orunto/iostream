@@ -122,7 +122,7 @@ const Monitor = () => {
 
 
                     <div className='mt-5'>
-                        <h3>Update log</h3>
+                        <h3>Controller&#39;s log</h3>
 
                         {/* Update log */}
                         <Logs/>

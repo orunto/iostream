@@ -28,11 +28,13 @@ const RecordLogs = () => {
                         <Icon
                             name="server"
                         />
-                        <div>
-                            <small className='text-italic text-s1 grey text-bold'>Last updated: {item.value}%</small>
-                            <br/>
-                            <span className='mt-1'>{verboseTime(new Date(item.createdAt))}</span>
-                        </div>
+                        <span className="text-s1">
+                            <span className="grey text-bold">Capacity soil moisture sensor ({item.value}%)</span><br/>
+                            <small className='text-italic grey text-bold'>
+                                Last updated: {verboseTime(new Date(item.createdAt))}
+                            </small>
+                            {/* <span className='mt-1 grey'></span> */}
+                        </span>
                     </li>
                 ))
             }
