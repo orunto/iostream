@@ -1,12 +1,10 @@
 import Icon from '@/components/Icon';
-import SEO from '@/components/SEO';
 import Image from 'next/image';
 import Link from 'next/link';
 
 export default function Home() {
     return (
         <>
-            <SEO/>
             
             <header className='d-flex justify-between'>
                 {/* Logo */}
