@@ -35,6 +35,7 @@ const sensors = [
     {
         name: "Capacity soil moisture sensor",
         metric: "Soil Moisture",
+        slug:'soilMiosture',
         unit: "percent",
         structure: structures.soilMoistureStructure,
         record: {
@@ -45,6 +46,7 @@ const sensors = [
     {
         name: "",
         metric: "Humidity",
+        slug:'humidity',
         unit: "percent",
         record: {
             query: null,
@@ -54,6 +56,7 @@ const sensors = [
     {
         name: "",
         metric: "Temperature",
+        slug:'temperature',
         unit: "degree",
         record: {
             query: null,

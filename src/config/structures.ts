@@ -11,7 +11,7 @@ export interface ISoilMoistureRecord {
 }
 
 export const SoilMoistureStructure: Space<ISoilMoistureRecord> = {
-    space: "soilMoisture",
+    space: "moisturesensor",
     description: "",
     structure: {
         value: {

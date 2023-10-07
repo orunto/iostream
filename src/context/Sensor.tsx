@@ -37,7 +37,7 @@ export default useSensorContext;
 export const SensorContextProvider = (props:ISensorContextProvider) => {
 
     const [records, setRecords] = useState<ISoilMoisture[]>([]);
-    const [status, setStatus] = useState<Status>('not-loading');
+    const [status, setStatus] = useState<Status>('loading');
 
 
     const loadRecords = async () => {
@@ -46,9 +46,11 @@ export const SensorContextProvider = (props:ISensorContextProvider) => {
         
         const records = await SoilStructureModel.find({})
 
+        console.log(records)
+
         // return records; 
         setStatus(()=>'not-loading')
-        setRecords(()=>Array.isArray(records) ? records.reverse() : []);
+        setRecords(()=>Array.isArray(records) ? [...records].reverse() : []);
     }
 
 

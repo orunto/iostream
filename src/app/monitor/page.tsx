@@ -7,11 +7,24 @@ import { devices, sensors } from '@/config/storage';
 import Metric from '@/components/Metric';
 import Logs from '@/components/Logs';
 import useSensorContext, { SensorContextProvider } from '@/context/Sensor';
+import { useEffect } from 'react';
 
 
 const Monitor = () => {
     const {status, records, updateStatus} = useSensorContext();
     const isLoading = status === 'loading';
+
+    useEffect(()=>{
+        let intervalId = setInterval(()=>{
+            if (isLoading) return;
+
+            if (updateStatus) updateStatus(true);
+        }, 5000) // 5 seconds
+
+        return ()=>{
+            clearInterval(intervalId);
+        }
+    })
 
     return (
         <>
@@ -40,7 +53,7 @@ const Monitor = () => {
                                 name='refresh'
                                 animation={ isLoading ? 'rotate' : '' }
                                 title={ isLoading ? "Synchronizing..." : ''}
-                                action={()=> updateStatus && updateStatus(true)}
+                                action={()=> (!isLoading && updateStatus) && updateStatus(true)}
                            />
                         </li>
                     </ul>
@@ -69,7 +82,8 @@ const Monitor = () => {
                                 </div>
 
                                 <div className='text-center mt-3'>
-                                    <Metric logs={records}/>
+                                    {/* Just a quick twak, should be made better later */}
+                                    <Metric logs={item.slug === 'soilMiosture' ? records : []}/>
                                     <small className='text-s1 grey'>{item.name}</small>
                                 </div>
                             </article>

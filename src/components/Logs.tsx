@@ -12,8 +12,6 @@ const RecordLogs = () => {
 
     const {records} = useSensorContext();
 
-    const dt = new Date("2023-10-06T13:14:21.297Z");
-
     return (
         <ul className='mt-1 log-list'>
 
@@ -31,7 +29,7 @@ const RecordLogs = () => {
                             name="server"
                         />
                         <div>
-                            <small className='text-italic text-s1 grey text-bold'>Last updated</small>
+                            <small className='text-italic text-s1 grey text-bold'>Last updated: {item.value}%</small>
                             <br/>
                             <span className='mt-1'>{verboseTime(new Date(item.createdAt))}</span>
                         </div>
