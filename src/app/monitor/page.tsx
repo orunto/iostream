@@ -123,6 +123,8 @@ const Monitor = () => {
 
                     <div className='mt-5'>
                         <h3>Controller&#39;s log</h3>
+                        <p className='text-s1 grey text-italic' style={{marginBlock: '.5rem 0'}}>
+                            Only the last 30 updates from sensors are displayed</p>
 
                         {/* Update log */}
                         <Logs/>
