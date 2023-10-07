@@ -23,7 +23,7 @@ const RecordLogs = () => {
                         and your IoT device is online.
                     </li>
                 :
-                records.map((item, index)=>(
+                records.slice(0,30).map((item, index)=>(
                     <li key={index} className='d-flex align-center log-item'>
                         <Icon
                             name="server"

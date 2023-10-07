@@ -68,7 +68,7 @@ const sensors = [
 
 const devices = [
     {
-        name: "",
+        name: "Tensilica L106 32-bit microcontroller",
         type: "Esp8266"
     }
 ]

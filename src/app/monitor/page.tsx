@@ -107,9 +107,12 @@ const Monitor = () => {
                                     name='chip'
                                 />
 
-                                <div>
-                                    <span>Arduino {item.type}</span>
-                                </div>
+                                <span className='text-s1 grey text-bold'>
+                                    <span>Tensilica L106 32-bit microcontroller</span><br/>
+                                    <span>Integrated Wi-Fi connectivity (802.11 b/g/n)</span><br/>
+                                    <span>80 MHz clock speed</span><br/><br/>
+                                    <a href="https://en.wikipedia.org/wiki/ESP8266" target="_blank" className='text-underline text-grand'>See more information</a>
+                                </span>
                                 
                             </div>
                         ))}

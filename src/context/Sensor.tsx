@@ -46,8 +46,6 @@ export const SensorContextProvider = (props:ISensorContextProvider) => {
         
         const records = await SoilStructureModel.find({})
 
-        console.log(records)
-
         // return records; 
         setStatus(()=>'not-loading')
         setRecords(()=>Array.isArray(records) ? [...records].reverse() : []);
