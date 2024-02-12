@@ -3,7 +3,7 @@ import Image from "next/image";
 
 type IconProps = {
     name: string,
-    animation?:'rotate',
+    animation?:'rotate' | string,
     title?:string,
     link?: string,
     action?: Function
@@ -39,6 +39,7 @@ const Icon = (props:IconProps) => {
             className='icon'
             data-animation={props.animation || ''}
             title={props.title}
+            onClick={()=> props.action && props.action()}
         >
             {image}
         </button>

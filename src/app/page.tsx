@@ -5,6 +5,7 @@ import Link from 'next/link';
 export default function Home() {
     return (
         <>
+            
             <header className='d-flex justify-between'>
                 {/* Logo */}
                 <a className='logo' href='/'>
@@ -88,7 +89,7 @@ export default function Home() {
 
                 <section className='d-flex col row-md justify-evenly align-center mt-10'>
                     
-                    <h2 className='text-lg3'>Built with the latest cloud storage technology</h2>
+                    <h2 className='text-lg3'>Built with the latest cloud technology</h2>
 
 
                     <div style={{width:"600px", maxWidth:'100%'}}>

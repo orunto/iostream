@@ -135,6 +135,11 @@
     font-style: italic;
 }
 
+.text-underline {
+    text-decoration: underline !important;
+}
+
+
 .text-grand {
     color: #EDBAFF;
 }

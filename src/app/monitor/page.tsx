@@ -1,11 +1,31 @@
+'use client';
 import Image from 'next/image';
 import ToggleSwitch from '@/components/ToggleSwitch';
 
-import pageStyle from '../../styles/page.module.css';
 import Icon from '@/components/Icon';
+import { devices, sensors } from '@/config/storage';
+import Metric from '@/components/Metric';
+import Logs from '@/components/Logs';
+import useSensorContext, { SensorContextProvider } from '@/context/Sensor';
+import { useEffect } from 'react';
 
 
 const Monitor = () => {
+    const {status, records, updateStatus} = useSensorContext();
+    const isLoading = status === 'loading';
+
+    useEffect(()=>{
+        let intervalId = setInterval(()=>{
+            if (isLoading) return;
+
+            if (updateStatus) updateStatus(true);
+        }, 5000) // 5 seconds
+
+        return ()=>{
+            clearInterval(intervalId);
+        }
+    })
+
     return (
         <>
             <header className='d-flex justify-between'>
@@ -24,14 +44,16 @@ const Monitor = () => {
                         <li>
                            <Icon
                             name='doc'
+                            link='https://github.com/orunto/iostream/tree/main#readme'
                            />
                         </li>
 
                         <li>
                             <Icon
                                 name='refresh'
-                                // animation="rotate"
-                                title="Updating..."
+                                animation={ isLoading ? 'rotate' : '' }
+                                title={ isLoading ? "Synchronizing..." : ''}
+                                action={()=> (!isLoading && updateStatus) && updateStatus(true)}
                            />
                         </li>
                     </ul>
@@ -50,18 +72,19 @@ const Monitor = () => {
 
                 <section className='my-1 d-flex col row-md r-gap--2 align-center justify-evenly'>
                     {
-                        [1,2,3].map((item)=>(
-                            <article key={item} className='sensor-display'>
+                        sensors.map((item, index)=>(
+                            <article key={index} className={'sensor-display ' + (!Boolean(item.record.query) && 'disabled')}>
                                 <div className='d-flex justify-between'>
-                                    <span className='text-x1'>Temp sensor</span>
+                                    <span className='text-x1'>{item.metric}</span>
 
                                     {/* Toggle switch */}
-                                    <ToggleSwitch on/>
+                                    <ToggleSwitch on={Boolean(item.record.query)}/>
                                 </div>
 
                                 <div className='text-center mt-3'>
-                                    <span className='text-grand text-lg2 d-block text-bold'>24<sup>o</sup>C</span>
-                                    <small className='text-s1 grey'>Temperature</small>
+                                    {/* Just a quick twak, should be made better later */}
+                                    <Metric logs={item.slug === 'soilMiosture' ? records : []}/>
+                                    <small className='text-s1 grey'>{item.name}</small>
                                 </div>
                             </article>
                         ))
@@ -78,39 +101,33 @@ const Monitor = () => {
                         <h3>Device information</h3>
 
                         {/* Device info */}
-                        <div className='mt-1 device d-flex c-gap--2'>
-                            <Icon
-                                name='chip'
-                            />
+                        {devices.map((item, index)=>(
+                            <div key={index} className='mt-1 device d-flex c-gap--2'>
+                                <Icon
+                                    name='chip'
+                                />
 
-                            <div>
-                                <span>Arduino xxx</span>
+                                <span className='text-s1 grey text-bold'>
+                                    <span>Tensilica L106 32-bit microcontroller</span><br/>
+                                    <span>Integrated Wi-Fi connectivity (802.11 b/g/n)</span><br/>
+                                    <span>80 MHz clock speed</span><br/><br/>
+                                    <a href="https://en.wikipedia.org/wiki/ESP8266" target="_blank" className='text-underline text-grand'>See more information</a>
+                                </span>
+                                
                             </div>
-                            
-                        </div>
+                        ))}
+                        
                     </div>
 
 
 
                     <div className='mt-5'>
-                        <h3>Update log</h3>
+                        <h3>Controller&#39;s log</h3>
+                        <p className='text-s1 grey text-italic' style={{marginBlock: '.5rem 0'}}>
+                            Only the last 30 updates from sensors are displayed</p>
 
                         {/* Update log */}
-                        <ul className='mt-1 log-list'>
-                            {[1,2,3,4,5].map(item=>(
-                                <li key={item} className='d-flex align-center log-item'>
-                                    {/* icons */}
-                                    <Icon
-                                        name="server"
-                                    />
-                                    <div>
-                                        <small className='text-italic text-s1 grey text-bold'>Last updated</small>
-                                        <br/>
-                                        <span className='mt-1'>sometime</span>
-                                    </div>
-                                </li>
-                            ))}
-                        </ul>
+                        <Logs/>
 
                     </div>
 
@@ -127,4 +144,13 @@ const Monitor = () => {
 }
 
 
-export default Monitor;
+const MonitorWrapper = () => {
+    return (
+        <SensorContextProvider>
+            <Monitor/>
+        </SensorContextProvider>
+    )
+}
+
+
+export default MonitorWrapper;
