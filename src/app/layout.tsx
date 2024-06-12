@@ -1,10 +1,10 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { Pathway_Extreme } from 'next/font/google'
 
 import '../styles/globals.css';
 import '../styles/utility.css';
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Pathway_Extreme({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: 'IOStream',

@@ -99,29 +99,37 @@
 
 .text-lg1 {
     font-size: clamp(2.3rem, 5.2vw, 4.7rem);
+    color: #fff;
 }
 
 .text-lg2 {
+    color: #fff;
     font-size: 2.9rem;
 }
 .text-lg3 {
     /* font-size: 2.5rem; */
     font-size: clamp(1.5rem, 2.7vw, 3.9rem);
+    color: #fff;
+
 }
 .text-lg4 {
     /* font-size: 2rem; */
+    color: #fff;
     font-size: clamp(1.5rem, 2vw, 3.9rem);
 }
 .text-lg5 {
+    color: #fff;
     /* font-size: 2rem; */
     font-size: clamp(1rem, 1.6vw, 2.9rem);
 }
 .text-lg6 {
+    color: #fff;
     /* font-size: 2rem; */
     font-size: clamp(.8rem, 1vw, 2.3rem);
 }
 
 .text-x1 {
+    color: #fff;
     font-size: 1.2rem;
 }
 
